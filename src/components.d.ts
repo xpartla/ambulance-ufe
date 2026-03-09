@@ -6,6 +6,12 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface XpartlaAmbulanceWlApp {
+        /**
+          * @default ""
+         */
+        "basePath": string;
+    }
     interface XpartlaAmbulanceWlEditor {
         "entryId": string;
     }
@@ -16,7 +22,17 @@ export interface XpartlaAmbulanceWlEditorCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLXpartlaAmbulanceWlEditorElement;
 }
+export interface XpartlaAmbulanceWlListCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLXpartlaAmbulanceWlListElement;
+}
 declare global {
+    interface HTMLXpartlaAmbulanceWlAppElement extends Components.XpartlaAmbulanceWlApp, HTMLStencilElement {
+    }
+    var HTMLXpartlaAmbulanceWlAppElement: {
+        prototype: HTMLXpartlaAmbulanceWlAppElement;
+        new (): HTMLXpartlaAmbulanceWlAppElement;
+    };
     interface HTMLXpartlaAmbulanceWlEditorElementEventMap {
         "editor-closed": string;
     }
@@ -34,30 +50,53 @@ declare global {
         prototype: HTMLXpartlaAmbulanceWlEditorElement;
         new (): HTMLXpartlaAmbulanceWlEditorElement;
     };
+    interface HTMLXpartlaAmbulanceWlListElementEventMap {
+        "entry-clicked": string;
+    }
     interface HTMLXpartlaAmbulanceWlListElement extends Components.XpartlaAmbulanceWlList, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLXpartlaAmbulanceWlListElementEventMap>(type: K, listener: (this: HTMLXpartlaAmbulanceWlListElement, ev: XpartlaAmbulanceWlListCustomEvent<HTMLXpartlaAmbulanceWlListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLXpartlaAmbulanceWlListElementEventMap>(type: K, listener: (this: HTMLXpartlaAmbulanceWlListElement, ev: XpartlaAmbulanceWlListCustomEvent<HTMLXpartlaAmbulanceWlListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLXpartlaAmbulanceWlListElement: {
         prototype: HTMLXpartlaAmbulanceWlListElement;
         new (): HTMLXpartlaAmbulanceWlListElement;
     };
     interface HTMLElementTagNameMap {
+        "xpartla-ambulance-wl-app": HTMLXpartlaAmbulanceWlAppElement;
         "xpartla-ambulance-wl-editor": HTMLXpartlaAmbulanceWlEditorElement;
         "xpartla-ambulance-wl-list": HTMLXpartlaAmbulanceWlListElement;
     }
 }
 declare namespace LocalJSX {
+    interface XpartlaAmbulanceWlApp {
+        /**
+          * @default ""
+         */
+        "basePath"?: string;
+    }
     interface XpartlaAmbulanceWlEditor {
         "entryId"?: string;
         "onEditor-closed"?: (event: XpartlaAmbulanceWlEditorCustomEvent<string>) => void;
     }
     interface XpartlaAmbulanceWlList {
+        "onEntry-clicked"?: (event: XpartlaAmbulanceWlListCustomEvent<string>) => void;
     }
 
+    interface XpartlaAmbulanceWlAppAttributes {
+        "basePath": string;
+    }
     interface XpartlaAmbulanceWlEditorAttributes {
         "entryId": string;
     }
 
     interface IntrinsicElements {
+        "xpartla-ambulance-wl-app": Omit<XpartlaAmbulanceWlApp, keyof XpartlaAmbulanceWlAppAttributes> & { [K in keyof XpartlaAmbulanceWlApp & keyof XpartlaAmbulanceWlAppAttributes]?: XpartlaAmbulanceWlApp[K] } & { [K in keyof XpartlaAmbulanceWlApp & keyof XpartlaAmbulanceWlAppAttributes as `attr:${K}`]?: XpartlaAmbulanceWlAppAttributes[K] } & { [K in keyof XpartlaAmbulanceWlApp & keyof XpartlaAmbulanceWlAppAttributes as `prop:${K}`]?: XpartlaAmbulanceWlApp[K] };
         "xpartla-ambulance-wl-editor": Omit<XpartlaAmbulanceWlEditor, keyof XpartlaAmbulanceWlEditorAttributes> & { [K in keyof XpartlaAmbulanceWlEditor & keyof XpartlaAmbulanceWlEditorAttributes]?: XpartlaAmbulanceWlEditor[K] } & { [K in keyof XpartlaAmbulanceWlEditor & keyof XpartlaAmbulanceWlEditorAttributes as `attr:${K}`]?: XpartlaAmbulanceWlEditorAttributes[K] } & { [K in keyof XpartlaAmbulanceWlEditor & keyof XpartlaAmbulanceWlEditorAttributes as `prop:${K}`]?: XpartlaAmbulanceWlEditor[K] };
         "xpartla-ambulance-wl-list": XpartlaAmbulanceWlList;
     }
@@ -66,6 +105,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "xpartla-ambulance-wl-app": LocalJSX.IntrinsicElements["xpartla-ambulance-wl-app"] & JSXBase.HTMLAttributes<HTMLXpartlaAmbulanceWlAppElement>;
             "xpartla-ambulance-wl-editor": LocalJSX.IntrinsicElements["xpartla-ambulance-wl-editor"] & JSXBase.HTMLAttributes<HTMLXpartlaAmbulanceWlEditorElement>;
             "xpartla-ambulance-wl-list": LocalJSX.IntrinsicElements["xpartla-ambulance-wl-list"] & JSXBase.HTMLAttributes<HTMLXpartlaAmbulanceWlListElement>;
         }
