@@ -7,6 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface XpartlaAmbulanceWlApp {
+        "ambulanceId": string;
+        "apiBase": string;
         /**
           * @default ""
          */
@@ -16,6 +18,8 @@ export namespace Components {
         "entryId": string;
     }
     interface XpartlaAmbulanceWlList {
+        "ambulanceId": string;
+        "apiBase": string;
     }
 }
 export interface XpartlaAmbulanceWlEditorCustomEvent<T> extends CustomEvent<T> {
@@ -75,6 +79,8 @@ declare global {
 }
 declare namespace LocalJSX {
     interface XpartlaAmbulanceWlApp {
+        "ambulanceId"?: string;
+        "apiBase"?: string;
         /**
           * @default ""
          */
@@ -85,20 +91,28 @@ declare namespace LocalJSX {
         "onEditor-closed"?: (event: XpartlaAmbulanceWlEditorCustomEvent<string>) => void;
     }
     interface XpartlaAmbulanceWlList {
+        "ambulanceId"?: string;
+        "apiBase"?: string;
         "onEntry-clicked"?: (event: XpartlaAmbulanceWlListCustomEvent<string>) => void;
     }
 
     interface XpartlaAmbulanceWlAppAttributes {
         "basePath": string;
+        "apiBase": string;
+        "ambulanceId": string;
     }
     interface XpartlaAmbulanceWlEditorAttributes {
         "entryId": string;
+    }
+    interface XpartlaAmbulanceWlListAttributes {
+        "apiBase": string;
+        "ambulanceId": string;
     }
 
     interface IntrinsicElements {
         "xpartla-ambulance-wl-app": Omit<XpartlaAmbulanceWlApp, keyof XpartlaAmbulanceWlAppAttributes> & { [K in keyof XpartlaAmbulanceWlApp & keyof XpartlaAmbulanceWlAppAttributes]?: XpartlaAmbulanceWlApp[K] } & { [K in keyof XpartlaAmbulanceWlApp & keyof XpartlaAmbulanceWlAppAttributes as `attr:${K}`]?: XpartlaAmbulanceWlAppAttributes[K] } & { [K in keyof XpartlaAmbulanceWlApp & keyof XpartlaAmbulanceWlAppAttributes as `prop:${K}`]?: XpartlaAmbulanceWlApp[K] };
         "xpartla-ambulance-wl-editor": Omit<XpartlaAmbulanceWlEditor, keyof XpartlaAmbulanceWlEditorAttributes> & { [K in keyof XpartlaAmbulanceWlEditor & keyof XpartlaAmbulanceWlEditorAttributes]?: XpartlaAmbulanceWlEditor[K] } & { [K in keyof XpartlaAmbulanceWlEditor & keyof XpartlaAmbulanceWlEditorAttributes as `attr:${K}`]?: XpartlaAmbulanceWlEditorAttributes[K] } & { [K in keyof XpartlaAmbulanceWlEditor & keyof XpartlaAmbulanceWlEditorAttributes as `prop:${K}`]?: XpartlaAmbulanceWlEditor[K] };
-        "xpartla-ambulance-wl-list": XpartlaAmbulanceWlList;
+        "xpartla-ambulance-wl-list": Omit<XpartlaAmbulanceWlList, keyof XpartlaAmbulanceWlListAttributes> & { [K in keyof XpartlaAmbulanceWlList & keyof XpartlaAmbulanceWlListAttributes]?: XpartlaAmbulanceWlList[K] } & { [K in keyof XpartlaAmbulanceWlList & keyof XpartlaAmbulanceWlListAttributes as `attr:${K}`]?: XpartlaAmbulanceWlListAttributes[K] } & { [K in keyof XpartlaAmbulanceWlList & keyof XpartlaAmbulanceWlListAttributes as `prop:${K}`]?: XpartlaAmbulanceWlList[K] };
     }
 }
 export { LocalJSX as JSX };
