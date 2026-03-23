@@ -38,6 +38,7 @@ export class XpartlaAmbulanceWlApp {
   }
 
   render() {
+    console.debug("test")
     let element = "list"
     let entryId = "@new"
 
